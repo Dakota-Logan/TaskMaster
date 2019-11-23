@@ -1,12 +1,11 @@
 import store from '../store.js'
 import ListService from "../Services/ListService.js";
 
-//TODO Don't forget to render to the screen after every data change.
 let listContainer = document.getElementById('list-container');
 
 function _drawLists() {
 	let template = '';
-	store.State.lists.forEach(cur=>template+=cur.Template)
+	store.State.lists.forEach(cur=>template+=cur.Template);
 	listContainer.innerHTML=template;
 	console.log('Drawn!');
 }
@@ -22,10 +21,11 @@ export default class ListController {
 		event.preventDefault();
 		console.log(event.target.listname);
 		ListService.addList(event.target.listname.value);
+		event.target.listname.value = '';
 		_drawLists();
 	}
 	removeList (listId) {
-		ListService.removeList(listId)
+		ListService.removeList(listId);
 		_drawLists();
 	}
 
@@ -34,8 +34,8 @@ export default class ListController {
 		ListService.addItem(event.target.itemname.value, listId);
 		_drawLists();
 	}
-	removeItem (listId,itemId) {
-		ListService.removeItem(listId,itemId);
+	removeItem (itemId,listId) {
+		ListService.removeItem(itemId,listId);
 		_drawLists();
 	}
 }

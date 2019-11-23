@@ -14,18 +14,22 @@ class ListService {
 
 	addList (listName) {
 		store.State.lists.push(new List(listName));
+	store.saveState();
 	}
 	removeList(listId){
-		store.State.lists = store.State.lists.filter(x=>x.id!=listId);
+		store.State.lists = store.State.lists.filter(x=>x.id!==listId);
+	store.saveState();
 	}
 
 	addItem (itemName, listId) {
-		let list = store.State.lists.find(cur=>cur.id==listId);
+		let list = store.State.lists.find(cur=>cur.id===listId);
 		list.items.push(new Item(itemName, listId));
+	store.saveState();
 	}
-	removeItem (listId,itemId) {
-		let list = store.State.lists.find(cur=>cur.id==listId);
-		list.items = list.items.filter(cur=>cur.id!=itemId);
+	removeItem (itemId,listId) {
+		let list = store.State.lists.find(cur=>cur.id===listId);
+		list.items = list.items.filter(cur=>cur.id!==itemId);
+	store.saveState();
 	}
 }
 
