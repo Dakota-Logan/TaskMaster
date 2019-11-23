@@ -1,0 +1,46 @@
+:root{
+	--primary: rgba(0,0,0,1.0);
+}
+
+body{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+header{
+	max-height: 20vh;
+	display: flex;
+	justify-content: space-between;
+}
+header h1{
+	max-width: 40%;
+}
+#add-list-form{
+	max-width: 60%;
+	display: block;
+	right:0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+}
+#add-list-form div{
+	max-width: 100%;
+	text-align: center;
+}
+#add-list-form button{
+	margin:.5rem;
+}
+
+main{}
+.list-item-name{}
+.list-item-detail{}
+.btn-trash{
+	border: none;
+	background: none;
+	font-size: 1rem;
+}
+
+footer{}

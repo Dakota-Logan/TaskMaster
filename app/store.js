@@ -5,12 +5,7 @@ let _state = {
   lists: []
 };
 
-//NOTE You should not need to change the code from this point down
-
 class Store {
-  /**
-   * Provides access to application state data
-   */
   constructor() {
     this.loadState();
   }

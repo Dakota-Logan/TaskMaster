@@ -1,4 +1,6 @@
 import List from "../Models/List.js";
+import Item from "../Models/Item.js";
+import store from '../store.js';
 
 //Public
 class ListService {
@@ -6,6 +8,25 @@ class ListService {
   //given the information you need in the controller,
   //what methods will you need to do when this class is first 'constructed'?
   //NOTE You will need this code to persist your data into local storage, be sure to call the store method to save after each change
+	constructor () {
+
+	}
+
+	addList (listName) {
+		store.State.lists.push(new List(listName));
+	}
+	removeList(listId){
+		store.State.lists = store.State.lists.filter(x=>x.id!=listId);
+	}
+
+	addItem (itemName, listId) {
+		let list = store.State.lists.find(cur=>cur.id==listId);
+		list.items.push(new Item(itemName, listId));
+	}
+	removeItem (listId,itemId) {
+		let list = store.State.lists.find(cur=>cur.id==listId);
+		list.items = list.items.filter(cur=>cur.id!=itemId);
+	}
 }
 
 const SERVICE = new ListService();
