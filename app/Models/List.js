@@ -1,18 +1,18 @@
+import Item from "./Item.js"
 import { generateId } from "../utils.js";
 
 export default class List {
-  constructor(listName) {
-    this.id = generateId();
-    this.items = [];
+  constructor(listName, listId, items = []) {
+    this.id = listId || generateId();
+    this.items = items.map(cur=>new Item(cur.title, cur.listId, cur.id));
     this.name = listName;
-    console.log('Created new List')
+    console.log('Created new List:', this)
   }
   //Be sure to add the methods needed to create the view template for this model
   //For starting out, your tasks may be strings alone, but later you may wish to turn them into full objects, that will be up to you
   get Template () {
-  	console.log('Getting template');
   	return `
-  		<div class="todo-list">
+  		<div class="list">
 			<dl class="todo-items">
 			<h2>${this.name}</h2>
 			<button class="btn-trash" onclick="app.listController.removeList('${this.id}')">
@@ -20,7 +20,7 @@ export default class List {
 			</button>
 			${this.drawItems()}
 			</dl>
-			<form onsubmit="app.listController.addItem(event,'${this.id}')">
+			<form class="list-item-form" onsubmit="app.listController.addItem(event,'${this.id}')">
 				<label for="itemname"></label>
 				<input type="text" id="itemname" name="itemname"/>
 				<button type="submit">Add Item</button>

@@ -11,25 +11,24 @@ class ListService {
 	constructor () {
 
 	}
-
 	addList (listName) {
 		store.State.lists.push(new List(listName));
-	store.saveState();
+		store.saveState();
 	}
 	removeList(listId){
-		store.State.lists = store.State.lists.filter(x=>x.id!==listId);
-	store.saveState();
+		store.State.lists = store.State.lists.filter(cur=>cur.id!==listId);
+		store.saveState();
 	}
 
 	addItem (itemName, listId) {
 		let list = store.State.lists.find(cur=>cur.id===listId);
 		list.items.push(new Item(itemName, listId));
-	store.saveState();
+		store.saveState();
 	}
 	removeItem (itemId,listId) {
 		let list = store.State.lists.find(cur=>cur.id===listId);
 		list.items = list.items.filter(cur=>cur.id!==itemId);
-	store.saveState();
+		store.saveState();
 	}
 }
 
