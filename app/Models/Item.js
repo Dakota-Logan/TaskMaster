@@ -8,12 +8,11 @@ export default class Item{
 	}
 	get Template () {
 		return `
-		<div class="list-item-container">
-			<dt class="list-item-name" id="${this.id}">${this.title}</dt>
+			<dt class="list-item-container" id="${this.id}">${this.title}
 			<button class="btn-trash" onclick="app.listController.removeItem('${this.id}','${this.listId}')">
 				<i class="far fa-trash-alt"></i>
 			</button>
-		</div>
+			</dt>
 		`
 	}
 }

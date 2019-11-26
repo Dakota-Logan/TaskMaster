@@ -13,11 +13,13 @@ export default class List {
   get Template () {
   	return `
   		<div class="list">
+			<div id="list-name-btn">
+			<h2>${this.name} <button class="btn-trash" onclick="app.listController.removeList('${this.id}')">
+	<i class="far fa-trash-alt"></i>
+	</button></h2>
+			
+			</div>			
 			<dl class="todo-items">
-			<h2>${this.name}</h2>
-			<button class="btn-trash" onclick="app.listController.removeList('${this.id}')">
-				<i class="far fa-trash-alt"></i>
-			</button>
 			${this.drawItems()}
 			</dl>
 			<form class="list-item-form" onsubmit="app.listController.addItem(event,'${this.id}')">
